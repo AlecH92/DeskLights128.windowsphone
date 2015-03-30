@@ -1,0 +1,146 @@
+﻿<Page
+    x:Class="DeskLights128.PivotPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DeskLights128"
+    xmlns:C4FControls="using:Coding4Fun.Toolkit.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:DeskLights128.Data"
+    mc:Ignorable="d"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition>
+                <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                    <CommonNavigationTransitionInfo IsStaggeringEnabled="True"/>
+                </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+            </NavigationThemeTransition>
+        </TransitionCollection>
+    </Page.Transitions>
+
+    <Grid>
+        <Pivot x:Uid="Pivot" Title="DeskLights128" x:Name="pivot" CommonNavigationTransitionInfo.IsStaggerElement="True" BorderThickness="0" BorderBrush="#FFF91313" Background="Black" Foreground="White">
+            <!--Pivot item one-->
+            <PivotItem
+                x:Uid="PivotItem1"
+                Margin="19,14.5,0,0"
+                Header="alert"
+                CommonNavigationTransitionInfo.IsStaggerElement="True">
+                <Grid HorizontalAlignment="Left" Height="489" VerticalAlignment="Top" Width="381" Margin="0,0,-0.167,0">
+                    <Button x:Name="alertSend" Content="Update" HorizontalAlignment="Left" Margin="254,155,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="alertDelay" HorizontalAlignment="Left" Margin="122,55,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" ToolTipService.ToolTip="Delay in milliseconds" InputScope="Number" MaxLength="6" PlaceholderText="1000" Width="89"/>
+                    <TextBlock x:Name="alertDelayLabel" HorizontalAlignment="Left" Margin="59,55,0,0" TextWrapping="Wrap" Text="Delay:" VerticalAlignment="Top" Height="39" Width="58" FontFamily="Romantic" FontSize="21.333" TextAlignment="Right"/>
+                </Grid>
+            </PivotItem>
+
+            <!--Pivot item two-->
+            <PivotItem
+                x:Uid="PivotItem2"
+                Margin="19,14.5,0,0"
+                Header="color table"
+                CommonNavigationTransitionInfo.IsStaggerElement="True">
+                <Grid HorizontalAlignment="Left" Height="489" VerticalAlignment="Top" Width="381" Margin="0,0,-0.167,0">
+                    <Button x:Name="colorTableSend" Content="Update" HorizontalAlignment="Left" Margin="254,155,0,0" VerticalAlignment="Top"/>
+
+
+                </Grid>
+            </PivotItem>
+
+            <!--Pivot item three-->
+            <PivotItem
+                x:Uid="PivotItem3"
+                Margin="19,14.5,0,0"
+                Header="color commands"
+                CommonNavigationTransitionInfo.IsStaggerElement="True">
+                <Grid HorizontalAlignment="Left" Height="489" VerticalAlignment="Top" Width="381" Margin="0,0,-0.167,0">
+                    <Button x:Name="colorCommandsKITT" Content="K.I.T.T." HorizontalAlignment="Left" Margin="240,155,0,0" VerticalAlignment="Top" Width="123"/>
+                    <Button x:Name="colorComamndsKITTMulti" Content="K.I.T.T. Multi" HorizontalAlignment="Left" Margin="240,213,0,0" VerticalAlignment="Top" Width="123"/>
+                    <Button x:Name="colorCommandsRandom" Content="Random" HorizontalAlignment="Left" Margin="240,95,0,0" VerticalAlignment="Top" Width="123"/>
+                    <Button x:Name="colorCommandsRainbow" Content="Rainbow" HorizontalAlignment="Left" Margin="240,36,0,0" VerticalAlignment="Top" Width="123"/>
+
+                </Grid>
+            </PivotItem>
+
+            <!--Pivot item four-->
+            <PivotItem
+                x:Uid="PivotItem4"
+                Margin="19,14.5,0,0"
+                Header="color pixel"
+                CommonNavigationTransitionInfo.IsStaggerElement="True">
+                <Grid HorizontalAlignment="Left" Height="489" VerticalAlignment="Top" Width="381" Margin="0,0,-0.167,0">
+                    <Button x:Name="colorPixelSend" Content="Update" HorizontalAlignment="Left" Margin="254,155,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="colorPixelX" HorizontalAlignment="Left" Margin="122,55,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" ToolTipService.ToolTip="X Coordinate" InputScope="Number" MaxLength="6" PlaceholderText="1" Width="89"/>
+                    <TextBlock x:Name="colorPixelXLabel" HorizontalAlignment="Left" Margin="59,55,0,0" TextWrapping="Wrap" Text="X:" VerticalAlignment="Top" Height="39" Width="58" FontFamily="Romantic" FontSize="21.333" TextAlignment="Right"/>
+                    <TextBox x:Name="colorPixelY" HorizontalAlignment="Left" Margin="122,114,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" ToolTipService.ToolTip="Y Coordinate" InputScope="Number" MaxLength="6" PlaceholderText="1" Width="89"/>
+                    <TextBlock x:Name="colorPixelYLabel" HorizontalAlignment="Left" Margin="59,114,0,0" TextWrapping="Wrap" Text="Y:" VerticalAlignment="Top" Height="39" Width="58" FontFamily="Romantic" FontSize="21.333" TextAlignment="Right"/>
+
+                </Grid>
+            </PivotItem>
+
+            <!--Pivot item five-->
+            <PivotItem
+                x:Uid="PivotItem5"
+                Margin="19,14.5,0,0"
+                Header="color wipe"
+                CommonNavigationTransitionInfo.IsStaggerElement="True">
+                <Grid HorizontalAlignment="Left" Height="489" VerticalAlignment="Top" Width="381" Margin="0,0,-0.167,0">
+                    <Button x:Name="colorWipeSend" Content="Update" HorizontalAlignment="Left" Margin="254,155,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="colorWipeDelay" HorizontalAlignment="Left" Margin="122,55,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" ToolTipService.ToolTip="Delay in milliseconds" InputScope="Number" MaxLength="6" PlaceholderText="1000" Width="89"/>
+                    <TextBlock x:Name="colorWipeDelayLabel" HorizontalAlignment="Left" Margin="59,55,0,0" TextWrapping="Wrap" Text="Delay:" VerticalAlignment="Top" Height="39" Width="58" FontFamily="Romantic" FontSize="21.333" TextAlignment="Right"/>
+
+                </Grid>
+            </PivotItem>
+
+            <!--Pivot item six-->
+            <PivotItem
+                x:Uid="PivotItem6"
+                Margin="19,14.5,0,0"
+                Header="write"
+                CommonNavigationTransitionInfo.IsStaggerElement="True">
+                <Grid HorizontalAlignment="Left" Height="489" VerticalAlignment="Top" Width="381" Margin="0,0,-0.167,0">
+                    <Button x:Name="writeSend" Content="Update" HorizontalAlignment="Left" Margin="254,155,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="writeString" HorizontalAlignment="Left" Margin="122,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" ToolTipService.ToolTip="String to display" MaxLength="6" PlaceholderText="Scroll" Width="89"/>
+                    <TextBlock x:Name="writeStringLabel" HorizontalAlignment="Left" Margin="33,55,0,0" TextWrapping="Wrap" Text="Display:" VerticalAlignment="Top" Height="39" Width="84" FontFamily="Romantic" FontSize="21.333" TextAlignment="Right"/>
+
+                </Grid>
+            </PivotItem>
+
+            <!--Pivot item seven-->
+            <PivotItem
+                x:Uid="PivotItem7"
+                Margin="19,14.5,0,0"
+                Header="play snake"
+                CommonNavigationTransitionInfo.IsStaggerElement="True">
+                <Grid HorizontalAlignment="Left" Height="489" VerticalAlignment="Top" Width="381" Margin="0,0,-0.167,0">
+                    <Button x:Name="snakeUp" Content="Up" HorizontalAlignment="Left" Margin="127,40,0,0" VerticalAlignment="Top" Width="123"/>
+                    <Button x:Name="snakeDown" Content="Down" HorizontalAlignment="Left" Margin="127,240,0,0" VerticalAlignment="Top" Width="123"/>
+                    <Button x:Name="snakeLeft" Content="Left" HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top" Width="123"/>
+                    <Button x:Name="snakeRight" Content="Right" HorizontalAlignment="Left" Margin="248,140,0,0" VerticalAlignment="Top" Width="123"/>
+                    <Button x:Name="snakeNew" Content="New Game" HorizontalAlignment="Left" Margin="248,407,0,0" VerticalAlignment="Top" Width="123"/>
+                    <Button x:Name="snakeReset" Content="Reset" HorizontalAlignment="Left" Margin="10,407,0,0" VerticalAlignment="Top" Width="123"/>
+
+                </Grid>
+            </PivotItem>
+        </Pivot>
+    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:Name="selectColor" Label="Color" ToolTipService.ToolTip="Select a color for the commands" BorderThickness="5">
+                <AppBarButton.Flyout>
+                    <Flyout Placement="Full">
+                        <C4FControls:ColorHexagonPicker
+                            x:Name="Picker"
+                            ColorChanged="picker_ColorChanged">
+                        </C4FControls:ColorHexagonPicker>
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Uid="SecondaryButton1" x:Name="SecondaryButton1" Label="secondary command 1" />
+                <AppBarButton x:Uid="SecondaryButton2" x:Name="SecondaryButton2" Label="secondary command 2" />
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>
