@@ -254,6 +254,17 @@ Partial Public Class PivotPage
         Catch
         End Try
     End Sub
+
+    Private Async Sub colorWipeSend_Click(sender As Object, e As RoutedEventArgs) Handles colorWipeSend.Click
+        Dim thisString As String = ("http://" & ipaddr & "/wipe?r=" & theColor.R & "&g=" & theColor.G & "&b=" & theColor.B & "&d=" & colorWipeDelay.Text)
+        Debug.WriteLine(thisString)
+        Dim thisURL As Uri = New Uri(thisString)
+        Dim thisClient As HttpClient = New HttpClient()
+        Try
+            Await thisClient.GetAsync(thisURL)
+        Catch
+        End Try
+    End Sub
 #End Region
 
 End Class
