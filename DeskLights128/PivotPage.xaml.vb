@@ -188,6 +188,61 @@ Partial Public Class PivotPage
         Catch
         End Try
     End Sub
+
+    Private Async Sub colorCommandsRainbow_Click(sender As Object, e As RoutedEventArgs) Handles colorCommandsRainbow.Click
+        Dim thisString As String = ("http://" & ipaddr & "/default?id=1")
+        Debug.WriteLine(thisString)
+        Dim thisURL As Uri = New Uri(thisString)
+        Dim thisClient As HttpClient = New HttpClient()
+        Try
+            Await thisClient.GetAsync(thisURL)
+        Catch
+        End Try
+    End Sub
+
+    Private Async Sub colorCommandsRandom_Click(sender As Object, e As RoutedEventArgs) Handles colorCommandsRandom.Click
+        Dim thisString As String = ("http://" & ipaddr & "/default?id=2")
+        Debug.WriteLine(thisString)
+        Dim thisURL As Uri = New Uri(thisString)
+        Dim thisClient As HttpClient = New HttpClient()
+        Try
+            Await thisClient.GetAsync(thisURL)
+        Catch
+        End Try
+    End Sub
+
+    Private Async Sub colorCommandsKITT_Click(sender As Object, e As RoutedEventArgs) Handles colorCommandsKITT.Click
+        Dim thisString As String = ("http://" & ipaddr & "/default?id=5")
+        Debug.WriteLine(thisString)
+        Dim thisURL As Uri = New Uri(thisString)
+        Dim thisClient As HttpClient = New HttpClient()
+        Try
+            Await thisClient.GetAsync(thisURL)
+        Catch
+        End Try
+    End Sub
+
+    Private Async Sub colorComamndsKITTMulti_Click(sender As Object, e As RoutedEventArgs) Handles colorComamndsKITTMulti.Click
+        Dim thisString As String = ("http://" & ipaddr & "/default?id=8")
+        Debug.WriteLine(thisString)
+        Dim thisURL As Uri = New Uri(thisString)
+        Dim thisClient As HttpClient = New HttpClient()
+        Try
+            Await thisClient.GetAsync(thisURL)
+        Catch
+        End Try
+    End Sub
+
+    Private Async Sub colorCommandsOff_Click(sender As Object, e As RoutedEventArgs) Handles colorCommandsOff.Click
+        Dim thisString As String = ("http://" & ipaddr & "/default?id=4")
+        Debug.WriteLine(thisString)
+        Dim thisURL As Uri = New Uri(thisString)
+        Dim thisClient As HttpClient = New HttpClient()
+        Try
+            Await thisClient.GetAsync(thisURL)
+        Catch
+        End Try
+    End Sub
 #End Region
 
 End Class
