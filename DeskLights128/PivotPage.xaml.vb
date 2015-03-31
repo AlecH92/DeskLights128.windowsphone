@@ -13,6 +13,7 @@ Partial Public Class PivotPage
     Private Const SecondGroupName As String = "SecondGroup"
     Dim theColor As Color = ColorHelper.FromArgb(255, 255, 255, 255)
     Dim roamingSettings As Windows.Storage.ApplicationDataContainer = Windows.Storage.ApplicationData.Current.RoamingSettings
+    Dim ipaddr As Object = roamingSettings.Values("ipaddr")
 
     Private WithEvents _navigationHelper As New NavigationHelper(Me)
     Private ReadOnly _defaultViewModel As New ObservableDictionary
@@ -22,6 +23,11 @@ Partial Public Class PivotPage
         InitializeComponent()
 
         NavigationCacheMode = NavigationCacheMode.Required
+        If ipaddr Is Nothing Then
+            ipaddr = "127.0.0.1"
+        Else
+            ipaddr.ToString()
+        End If
     End Sub
 
     ''' <summary>
@@ -158,21 +164,13 @@ Partial Public Class PivotPage
     End Sub
 
     Private Async Sub alertSend_Click(sender As Object, e As RoutedEventArgs) Handles alertSend.Click
-        Dim ipaddr As Object = roamingSettings.Values("ipaddr")
-        If ipaddr Is Nothing Then
-            ipaddr = "127.0.0.1"
-        Else
-            ipaddr.ToString()
-        End If
         Dim thisString As String = ("http://" & ipaddr & "/alert?r=" & theColor.R & "&g=" & theColor.G & "&b=" & theColor.B & "&d=" & alertDelay.Text)
         Debug.WriteLine(thisString)
         Dim thisURL As Uri = New Uri(thisString)
         Dim thisClient As HttpClient = New HttpClient()
         Try
             Await thisClient.GetAsync(thisURL)
-
         Catch
-
         End Try
     End Sub
 
@@ -180,6 +178,16 @@ Partial Public Class PivotPage
         Frame.Navigate(GetType(Settings))
     End Sub
 
+    Private Async Sub colorTableSend_Click(sender As Object, e As RoutedEventArgs) Handles colorTableSend.Click
+        Dim thisString As String = ("http://" & ipaddr & "/color?r=" & theColor.R & "&g=" & theColor.G & "&b=" & theColor.B)
+        Debug.WriteLine(thisString)
+        Dim thisURL As Uri = New Uri(thisString)
+        Dim thisClient As HttpClient = New HttpClient()
+        Try
+            Await thisClient.GetAsync(thisURL)
+        Catch
+        End Try
+    End Sub
 #End Region
 
 End Class
