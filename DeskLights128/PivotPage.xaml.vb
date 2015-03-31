@@ -2,6 +2,8 @@
 Imports DeskLights128.Data
 Imports Windows.UI
 Imports System.Windows.Media
+Imports System.Net
+Imports Windows.Web.Http
 
 ' The Pivot Application template is documented at http://go.microsoft.com/fwlink/?LinkID=391641
 
@@ -10,6 +12,7 @@ Partial Public Class PivotPage
 
     Private Const FirstGroupName As String = "FirstGroup"
     Private Const SecondGroupName As String = "SecondGroup"
+    Dim theColor As Color = ColorHelper.FromArgb(255, 255, 255, 255)
 
     Private WithEvents _navigationHelper As New NavigationHelper(Me)
     Private ReadOnly _defaultViewModel As New ObservableDictionary
@@ -98,6 +101,7 @@ Partial Public Class PivotPage
         listView.ScrollIntoView(newItem, ScrollIntoViewAlignment.Leading)
     End Sub
     Private Sub picker_ColorChanged(sender As Object, color As Color)
+        theColor = color
         Dim color2 As Color = ColorHelper.FromArgb(255, 255, 255, 255)
         Dim angle As Double = 45
         Dim theGradient As LinearGradientBrush = New LinearGradientBrush()
@@ -151,6 +155,19 @@ Partial Public Class PivotPage
 
     Protected Overrides Sub OnNavigatedFrom(e As NavigationEventArgs)
         _navigationHelper.OnNavigatedFrom(e)
+    End Sub
+
+    Private Async Sub alertSend_Click(sender As Object, e As RoutedEventArgs) Handles alertSend.Click
+        Dim thisString As String = ("http://192.168.1.238/alert?r=" & theColor.R & "&g=" & theColor.G & "&b=" & theColor.B & "&d=" & alertDelay.Text)
+        Debug.WriteLine(thisString)
+        Dim thisURL As Uri = New Uri(thisString)
+        Dim thisClient As HttpClient = New HttpClient()
+        Try
+            Await thisClient.GetAsync(thisURL)
+
+        Catch
+
+        End Try
     End Sub
 
 #End Region
