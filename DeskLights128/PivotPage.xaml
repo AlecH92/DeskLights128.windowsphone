@@ -59,6 +59,7 @@
                     <Button x:Name="colorComamndsKITTMulti" Content="K.I.T.T. Multi" HorizontalAlignment="Left" Margin="240,213,0,0" VerticalAlignment="Top" Width="123"/>
                     <Button x:Name="colorCommandsRandom" Content="Random" HorizontalAlignment="Left" Margin="240,95,0,0" VerticalAlignment="Top" Width="123"/>
                     <Button x:Name="colorCommandsRainbow" Content="Rainbow" HorizontalAlignment="Left" Margin="240,36,0,0" VerticalAlignment="Top" Width="123"/>
+                    <Button x:Name="colorCommandsOff" Content="All Off" HorizontalAlignment="Left" Margin="240,268,0,0" VerticalAlignment="Top" Width="123"/>
 
                 </Grid>
             </PivotItem>
@@ -139,7 +140,6 @@
             </AppBarButton>
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Uid="SecondaryButton1" x:Name="SecondaryButton1" Label="secondary command 1" />
-                <AppBarButton x:Uid="SecondaryButton2" x:Name="SecondaryButton2" Label="secondary command 2" />
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
