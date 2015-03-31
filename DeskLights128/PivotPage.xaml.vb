@@ -1,7 +1,6 @@
 ﻿Imports DeskLights128.Common
 Imports DeskLights128.Data
 Imports Windows.UI
-Imports System.Windows.Media
 Imports System.Net
 Imports Windows.Web.Http
 
@@ -13,6 +12,7 @@ Partial Public Class PivotPage
     Private Const FirstGroupName As String = "FirstGroup"
     Private Const SecondGroupName As String = "SecondGroup"
     Dim theColor As Color = ColorHelper.FromArgb(255, 255, 255, 255)
+    Dim roamingSettings As Windows.Storage.ApplicationDataContainer = Windows.Storage.ApplicationData.Current.RoamingSettings
 
     Private WithEvents _navigationHelper As New NavigationHelper(Me)
     Private ReadOnly _defaultViewModel As New ObservableDictionary
@@ -158,7 +158,13 @@ Partial Public Class PivotPage
     End Sub
 
     Private Async Sub alertSend_Click(sender As Object, e As RoutedEventArgs) Handles alertSend.Click
-        Dim thisString As String = ("http://192.168.1.238/alert?r=" & theColor.R & "&g=" & theColor.G & "&b=" & theColor.B & "&d=" & alertDelay.Text)
+        Dim ipaddr As Object = roamingSettings.Values("ipaddr")
+        If ipaddr Is Nothing Then
+            ipaddr = "127.0.0.1"
+        Else
+            ipaddr.ToString()
+        End If
+        Dim thisString As String = ("http://" & ipaddr & "/alert?r=" & theColor.R & "&g=" & theColor.G & "&b=" & theColor.B & "&d=" & alertDelay.Text)
         Debug.WriteLine(thisString)
         Dim thisURL As Uri = New Uri(thisString)
         Dim thisClient As HttpClient = New HttpClient()
@@ -168,6 +174,10 @@ Partial Public Class PivotPage
         Catch
 
         End Try
+    End Sub
+
+    Private Sub SecondaryButton1_Click(sender As Object, e As RoutedEventArgs) Handles SecondaryButton1.Click
+        Frame.Navigate(GetType(Settings))
     End Sub
 
 #End Region
