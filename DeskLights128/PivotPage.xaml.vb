@@ -276,6 +276,72 @@ Partial Public Class PivotPage
         Catch
         End Try
     End Sub
+
+    Private Async Sub snakeUp_Click(sender As Object, e As RoutedEventArgs) Handles snakeUp.Click
+        Dim thisString As String = ("http://" & ipaddr & "/snake?id=3")
+        Debug.WriteLine(thisString)
+        Dim thisURL As Uri = New Uri(thisString)
+        Dim thisClient As HttpClient = New HttpClient()
+        Try
+            Await thisClient.GetAsync(thisURL)
+        Catch
+        End Try
+    End Sub
+
+    Private Async Sub snakeDown_Click(sender As Object, e As RoutedEventArgs) Handles snakeDown.Click
+        Dim thisString As String = ("http://" & ipaddr & "/snake?id=4")
+        Debug.WriteLine(thisString)
+        Dim thisURL As Uri = New Uri(thisString)
+        Dim thisClient As HttpClient = New HttpClient()
+        Try
+            Await thisClient.GetAsync(thisURL)
+        Catch
+        End Try
+    End Sub
+
+    Private Async Sub snakeLeft_Click(sender As Object, e As RoutedEventArgs) Handles snakeLeft.Click
+        Dim thisString As String = ("http://" & ipaddr & "/snake?id=1")
+        Debug.WriteLine(thisString)
+        Dim thisURL As Uri = New Uri(thisString)
+        Dim thisClient As HttpClient = New HttpClient()
+        Try
+            Await thisClient.GetAsync(thisURL)
+        Catch
+        End Try
+    End Sub
+
+    Private Async Sub snakeRight_Click(sender As Object, e As RoutedEventArgs) Handles snakeRight.Click
+        Dim thisString As String = ("http://" & ipaddr & "/snake?id=2")
+        Debug.WriteLine(thisString)
+        Dim thisURL As Uri = New Uri(thisString)
+        Dim thisClient As HttpClient = New HttpClient()
+        Try
+            Await thisClient.GetAsync(thisURL)
+        Catch
+        End Try
+    End Sub
+
+    Private Async Sub snakeReset_Click(sender As Object, e As RoutedEventArgs) Handles snakeReset.Click
+        Dim thisString As String = ("http://" & ipaddr & "/snake?id=5")
+        Debug.WriteLine(thisString)
+        Dim thisURL As Uri = New Uri(thisString)
+        Dim thisClient As HttpClient = New HttpClient()
+        Try
+            Await thisClient.GetAsync(thisURL)
+        Catch
+        End Try
+    End Sub
+
+    Private Async Sub snakeNew_Click(sender As Object, e As RoutedEventArgs) Handles snakeNew.Click
+        Dim thisString As String = ("http://" & ipaddr & "/snake?id=6")
+        Debug.WriteLine(thisString)
+        Dim thisURL As Uri = New Uri(thisString)
+        Dim thisClient As HttpClient = New HttpClient()
+        Try
+            Await thisClient.GetAsync(thisURL)
+        Catch
+        End Try
+    End Sub
 #End Region
 
 End Class
