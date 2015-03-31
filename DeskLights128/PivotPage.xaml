@@ -102,7 +102,7 @@
                 CommonNavigationTransitionInfo.IsStaggerElement="True">
                 <Grid HorizontalAlignment="Left" Height="489" VerticalAlignment="Top" Width="381" Margin="0,0,-0.167,0">
                     <Button x:Name="writeSend" Content="Update" HorizontalAlignment="Left" Margin="254,155,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="writeString" HorizontalAlignment="Left" Margin="122,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" ToolTipService.ToolTip="String to display" MaxLength="6" PlaceholderText="Scroll" Width="89"/>
+                    <TextBox x:Name="writeString" HorizontalAlignment="Left" Margin="33,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" ToolTipService.ToolTip="String to display" MaxLength="28" PlaceholderText="Scroll" Width="330"/>
                     <TextBlock x:Name="writeStringLabel" HorizontalAlignment="Left" Margin="33,55,0,0" TextWrapping="Wrap" Text="Display:" VerticalAlignment="Top" Height="39" Width="84" FontFamily="Romantic" FontSize="21.333" TextAlignment="Right"/>
 
                 </Grid>
