@@ -74,6 +74,13 @@ Public NotInheritable Class Settings
     ''' <param name="e">Event data that describes how this page was reached.</param>
     Protected Overrides Sub OnNavigatedTo(e As NavigationEventArgs)
         _navigationHelper.OnNavigatedTo(e)
+        Dim ipaddr As Object = roamingSettings.Values("ipaddr")
+        If ipaddr Is Nothing Then
+            ipaddr = ""
+        Else
+            ipaddr.ToString()
+        End If
+        textBox.Text = ipaddr
     End Sub
 
     Protected Overrides Sub OnNavigatedFrom(e As NavigationEventArgs)

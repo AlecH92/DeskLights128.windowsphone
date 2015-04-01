@@ -14,6 +14,7 @@ Partial Public Class PivotPage
     Dim theColor As Color = ColorHelper.FromArgb(255, 255, 255, 255)
     Dim roamingSettings As Windows.Storage.ApplicationDataContainer = Windows.Storage.ApplicationData.Current.RoamingSettings
     Dim ipaddr As Object = roamingSettings.Values("ipaddr")
+    Dim ipaddrStr As String = ""
 
     Private WithEvents _navigationHelper As New NavigationHelper(Me)
     Private ReadOnly _defaultViewModel As New ObservableDictionary
@@ -23,10 +24,11 @@ Partial Public Class PivotPage
         InitializeComponent()
 
         NavigationCacheMode = NavigationCacheMode.Required
+        Dim ipaddr As Object = roamingSettings.Values("ipaddr")
         If ipaddr Is Nothing Then
-            ipaddr = "127.0.0.1"
+            ipaddrStr = "127.0.0.1"
         Else
-            ipaddr.ToString()
+            ipaddrStr = ipaddr.ToString()
         End If
     End Sub
 
@@ -157,6 +159,12 @@ Partial Public Class PivotPage
     ''' <param name="e">Event data that describes how this page was reached.</param>
     Protected Overrides Sub OnNavigatedTo(e As NavigationEventArgs)
         _navigationHelper.OnNavigatedTo(e)
+        Dim ipaddr As Object = roamingSettings.Values("ipaddr")
+        If ipaddr Is Nothing Then
+            ipaddrStr = "127.0.0.1"
+        Else
+            ipaddrStr = ipaddr.ToString()
+        End If
     End Sub
 
     Protected Overrides Sub OnNavigatedFrom(e As NavigationEventArgs)
@@ -164,7 +172,7 @@ Partial Public Class PivotPage
     End Sub
 
     Private Async Sub alertSend_Click(sender As Object, e As RoutedEventArgs) Handles alertSend.Click
-        Dim thisString As String = ("http://" & ipaddr & "/alert?r=" & theColor.R & "&g=" & theColor.G & "&b=" & theColor.B & "&d=" & alertDelay.Text)
+        Dim thisString As String = ("http://" & ipaddrStr & "/alert?r=" & theColor.R & "&g=" & theColor.G & "&b=" & theColor.B & "&d=" & alertDelay.Text)
         Debug.WriteLine(thisString)
         Dim thisURL As Uri = New Uri(thisString)
         Dim thisClient As HttpClient = New HttpClient()
@@ -190,7 +198,7 @@ Partial Public Class PivotPage
     End Sub
 
     Private Async Sub colorCommandsRainbow_Click(sender As Object, e As RoutedEventArgs) Handles colorCommandsRainbow.Click
-        Dim thisString As String = ("http://" & ipaddr & "/default?id=1")
+        Dim thisString As String = ("http://" & ipaddrStr & "/default?id=1")
         Debug.WriteLine(thisString)
         Dim thisURL As Uri = New Uri(thisString)
         Dim thisClient As HttpClient = New HttpClient()
@@ -201,7 +209,7 @@ Partial Public Class PivotPage
     End Sub
 
     Private Async Sub colorCommandsRandom_Click(sender As Object, e As RoutedEventArgs) Handles colorCommandsRandom.Click
-        Dim thisString As String = ("http://" & ipaddr & "/default?id=2")
+        Dim thisString As String = ("http://" & ipaddrStr & "/default?id=2")
         Debug.WriteLine(thisString)
         Dim thisURL As Uri = New Uri(thisString)
         Dim thisClient As HttpClient = New HttpClient()
@@ -212,7 +220,7 @@ Partial Public Class PivotPage
     End Sub
 
     Private Async Sub colorCommandsKITT_Click(sender As Object, e As RoutedEventArgs) Handles colorCommandsKITT.Click
-        Dim thisString As String = ("http://" & ipaddr & "/default?id=5")
+        Dim thisString As String = ("http://" & ipaddrStr & "/default?id=5")
         Debug.WriteLine(thisString)
         Dim thisURL As Uri = New Uri(thisString)
         Dim thisClient As HttpClient = New HttpClient()
@@ -223,7 +231,7 @@ Partial Public Class PivotPage
     End Sub
 
     Private Async Sub colorComamndsKITTMulti_Click(sender As Object, e As RoutedEventArgs) Handles colorComamndsKITTMulti.Click
-        Dim thisString As String = ("http://" & ipaddr & "/default?id=8")
+        Dim thisString As String = ("http://" & ipaddrStr & "/default?id=8")
         Debug.WriteLine(thisString)
         Dim thisURL As Uri = New Uri(thisString)
         Dim thisClient As HttpClient = New HttpClient()
@@ -234,7 +242,7 @@ Partial Public Class PivotPage
     End Sub
 
     Private Async Sub colorCommandsOff_Click(sender As Object, e As RoutedEventArgs) Handles colorCommandsOff.Click
-        Dim thisString As String = ("http://" & ipaddr & "/default?id=4")
+        Dim thisString As String = ("http://" & ipaddrStr & "/default?id=4")
         Debug.WriteLine(thisString)
         Dim thisURL As Uri = New Uri(thisString)
         Dim thisClient As HttpClient = New HttpClient()
@@ -245,7 +253,7 @@ Partial Public Class PivotPage
     End Sub
 
     Private Async Sub colorPixelSend_Click(sender As Object, e As RoutedEventArgs) Handles colorPixelSend.Click
-        Dim thisString As String = ("http://" & ipaddr & "/pixel?x=" & colorPixelX.Text & "&y=" & colorPixelY.Text & "&r=" & theColor.R & "&g=" & theColor.G & "&b=" & theColor.B)
+        Dim thisString As String = ("http://" & ipaddrStr & "/pixel?x=" & colorPixelX.Text & "&y=" & colorPixelY.Text & "&r=" & theColor.R & "&g=" & theColor.G & "&b=" & theColor.B)
         Debug.WriteLine(thisString)
         Dim thisURL As Uri = New Uri(thisString)
         Dim thisClient As HttpClient = New HttpClient()
@@ -256,7 +264,7 @@ Partial Public Class PivotPage
     End Sub
 
     Private Async Sub colorWipeSend_Click(sender As Object, e As RoutedEventArgs) Handles colorWipeSend.Click
-        Dim thisString As String = ("http://" & ipaddr & "/wipe?r=" & theColor.R & "&g=" & theColor.G & "&b=" & theColor.B & "&d=" & colorWipeDelay.Text)
+        Dim thisString As String = ("http://" & ipaddrStr & "/wipe?r=" & theColor.R & "&g=" & theColor.G & "&b=" & theColor.B & "&d=" & colorWipeDelay.Text)
         Debug.WriteLine(thisString)
         Dim thisURL As Uri = New Uri(thisString)
         Dim thisClient As HttpClient = New HttpClient()
@@ -267,7 +275,7 @@ Partial Public Class PivotPage
     End Sub
 
     Private Async Sub writeSend_Click(sender As Object, e As RoutedEventArgs) Handles writeSend.Click
-        Dim thisString As String = ("http://" & ipaddr & "/write?l=" & writeString.Text.Length & "c=" & writeString.Text)
+        Dim thisString As String = ("http://" & ipaddrStr & "/write?l=" & writeString.Text.Length & "c=" & writeString.Text)
         Debug.WriteLine(thisString)
         Dim thisURL As Uri = New Uri(thisString)
         Dim thisClient As HttpClient = New HttpClient()
@@ -278,7 +286,7 @@ Partial Public Class PivotPage
     End Sub
 
     Private Async Sub snakeUp_Click(sender As Object, e As RoutedEventArgs) Handles snakeUp.Click
-        Dim thisString As String = ("http://" & ipaddr & "/snake?id=3")
+        Dim thisString As String = ("http://" & ipaddrStr & "/snake?id=3")
         Debug.WriteLine(thisString)
         Dim thisURL As Uri = New Uri(thisString)
         Dim thisClient As HttpClient = New HttpClient()
@@ -289,7 +297,7 @@ Partial Public Class PivotPage
     End Sub
 
     Private Async Sub snakeDown_Click(sender As Object, e As RoutedEventArgs) Handles snakeDown.Click
-        Dim thisString As String = ("http://" & ipaddr & "/snake?id=4")
+        Dim thisString As String = ("http://" & ipaddrStr & "/snake?id=4")
         Debug.WriteLine(thisString)
         Dim thisURL As Uri = New Uri(thisString)
         Dim thisClient As HttpClient = New HttpClient()
@@ -300,7 +308,7 @@ Partial Public Class PivotPage
     End Sub
 
     Private Async Sub snakeLeft_Click(sender As Object, e As RoutedEventArgs) Handles snakeLeft.Click
-        Dim thisString As String = ("http://" & ipaddr & "/snake?id=1")
+        Dim thisString As String = ("http://" & ipaddrStr & "/snake?id=1")
         Debug.WriteLine(thisString)
         Dim thisURL As Uri = New Uri(thisString)
         Dim thisClient As HttpClient = New HttpClient()
@@ -311,7 +319,7 @@ Partial Public Class PivotPage
     End Sub
 
     Private Async Sub snakeRight_Click(sender As Object, e As RoutedEventArgs) Handles snakeRight.Click
-        Dim thisString As String = ("http://" & ipaddr & "/snake?id=2")
+        Dim thisString As String = ("http://" & ipaddrStr & "/snake?id=2")
         Debug.WriteLine(thisString)
         Dim thisURL As Uri = New Uri(thisString)
         Dim thisClient As HttpClient = New HttpClient()
@@ -322,7 +330,7 @@ Partial Public Class PivotPage
     End Sub
 
     Private Async Sub snakeReset_Click(sender As Object, e As RoutedEventArgs) Handles snakeReset.Click
-        Dim thisString As String = ("http://" & ipaddr & "/snake?id=5")
+        Dim thisString As String = ("http://" & ipaddrStr & "/snake?id=5")
         Debug.WriteLine(thisString)
         Dim thisURL As Uri = New Uri(thisString)
         Dim thisClient As HttpClient = New HttpClient()
@@ -333,7 +341,7 @@ Partial Public Class PivotPage
     End Sub
 
     Private Async Sub snakeNew_Click(sender As Object, e As RoutedEventArgs) Handles snakeNew.Click
-        Dim thisString As String = ("http://" & ipaddr & "/snake?id=6")
+        Dim thisString As String = ("http://" & ipaddrStr & "/snake?id=6")
         Debug.WriteLine(thisString)
         Dim thisURL As Uri = New Uri(thisString)
         Dim thisClient As HttpClient = New HttpClient()
